@@ -1,0 +1,25 @@
+### root access
+GET http://localhost:8000
+
+
+### create new user
+POST http://localhost:8000/api/v1/create-account
+Content-Type: application/json
+
+{
+    "email":"amritttttsapkota32@gmail.com",
+    "password":"123456",
+    "fName":"amrit",
+    "lName":"sapkota",
+    "address":"3-5 Burlington Road Homebush"
+   
+}
+
+### login api endpoint
+POST http://localhost:8000/api/v1/login
+Content-Type: application/json
+
+{
+    "email":"amritsapkota32@gmail.com",
+    "password":"abcd"
+}
