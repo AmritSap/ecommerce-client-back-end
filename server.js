@@ -5,7 +5,7 @@ import path from "path";
 dotenv.config();
 const app = express();
 import cors from "cors";
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8001;
 app.use(cors());
 app.use(morgan("tiny"));
 
@@ -23,16 +23,21 @@ app.get("/", function (req, res) {
 
 ///////////////////// database///////////////////////
 import mongoClient from "./config/db.js";
-mongoClient();  
+mongoClient();
 
 // //////////////////Routers////////////////
 import NewUserRouter from "./routers/NewUser.router.js";
-import loginRouter from "./routers/login.router.js"
+import loginRouter from "./routers/login.router.js";
+import productRouter from "./routers/product.router.js";
+import categoryRouter from "./routers/category.router.js";
+import cartRouter from "./routers/cart.router.js";
 
 // /////////////////APIS////////////////////
-app.use("/api/v1/create-account", NewUserRouter);  
+app.use("/api/v1/create-account", NewUserRouter);
 app.use("/api/v1/login", loginRouter);
-
+app.use("/api/v1/product", productRouter);
+app.use("/api/v1/category", categoryRouter);
+app.use("/api/v1/cart", cartRouter);
 // app.listen(3000);
 app.listen(PORT, (error) => {
   if (error) console.log(error);

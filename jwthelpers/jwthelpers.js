@@ -38,3 +38,22 @@ export const createRefreshJWT = (email, _id) => {
     }
   });
 };
+
+
+export const verifyAccessJWT = (accessJWT) => {
+  try {
+    const decoded = jwt.verify(accessJWT, process.env.JWT_ACCESS_SECRET);
+    return Promise.resolve(decoded);
+  } catch (error) {
+    return Promise.resolve(false);
+  }
+};
+
+export const verifyRefreshJWT = (refreshJWT) => {
+  try {
+    const decoded = jwt.verify(refreshJWT, process.env.JWT_REFRESH_SECRET);
+    return Promise.resolve(decoded);
+  } catch (error) {
+    return Promise.reject(false);
+  }
+};

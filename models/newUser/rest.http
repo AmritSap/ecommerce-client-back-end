@@ -1,9 +1,9 @@
 ### root access
-GET http://localhost:8000
+GET http://localhost:8001
 
 
 ### create new user
-POST http://localhost:8000/api/v1/create-account
+POST http://localhost:8001/api/v1/create-account
 Content-Type: application/json
 
 {
@@ -16,10 +16,38 @@ Content-Type: application/json
 }
 
 ### login api endpoint
-POST http://localhost:8000/api/v1/login
+POST http://localhost:8001/api/v1/login
 Content-Type: application/json
 
 {
     "email":"amritsapkota32@gmail.com",
     "password":"abcd"
 }
+
+##Category
+### fetch category end point
+GET http://localhost:8001/api/v1/category
+
+
+###fetch products by using categoryID
+GET http://localhost:8001/api/v1/category/609e75e9f1af6621b4f0f417
+
+
+##product
+###fetch all products
+GET http://localhost:8001/api/v1/product
+
+
+### fetchproducts by slug
+GET http://localhost:8001/api/v1/product/Almond-Milk
+
+
+
+###fetch the products to be in the cart
+POST http://localhost:8001/api/v1/cart
+Content-Type: application/json
+
+{
+"ids":["609e753ff1af6621b4f0f414","609e7572f1af6621b4f0f415"]
+}
+

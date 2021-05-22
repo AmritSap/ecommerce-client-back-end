@@ -4,8 +4,8 @@ const router = express.Router();
 import { getUserByEmail } from "../models/newUser/NewUser.model.js";
 import { comparePassword } from "../helpers/passwordBycrypt.helpers.js";
 import { createAccessJWT, createRefreshJWT } from "../jwthelpers/jwthelpers.js";
-
-router.post("/", async (req, res) => {
+import { loginValidation } from "../middlewares/formValidation.midleware.js";
+router.post("/", loginValidation, async (req, res) => {
   const { email, password } = req.body;
 
   try {
@@ -13,31 +13,31 @@ router.post("/", async (req, res) => {
     if (!result?._id) {
       return res.json({
         status: "error",
-        message: "id Invalid login details",
+        message: " Invalid login details",
       });
     }
     const hassedPasswordFromDb = result.password;
-    console.log(hassedPasswordFromDb);
+
     //compare the password
     const checkPassword = await comparePassword(password, hassedPasswordFromDb);
     if (!checkPassword) {
       return res.json({
         status: "error",
-        message: " password Invalid login details",
+        message: " invalid login details",
       });
     }
-    const accessJWt = await createAccessJWT(result.email, result._id);
+    const accessJWT = await createAccessJWT(result.email, result._id);
     const refreshJWT = await createRefreshJWT(result.email, result._id);
 
     result.password = undefined;
     res.json({
       status: "success",
       message: "login success",
-      accessJWt,
+      accessJWT,
       refreshJWT,
     });
   } catch (error) {
-    -console.log(error);
+    throw new Error(error.message);
   }
 });
 

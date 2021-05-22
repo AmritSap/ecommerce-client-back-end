@@ -6,13 +6,13 @@ import { newUserValidation } from "../middlewares/formValidation.midleware.js";
 
 router.post("/", newUserValidation,async (req, res) => {
   try {
-    console.log(req.body);
+  
 
     const { password } = req.body;
     const hassPass = await hassPassword(password);
     const newUser = { ...req.body, password: hassPass };
     const result = await createUser(newUser);
-    console.log("from router", result);
+   
 
     if (result?._id) {
       return res.json({
@@ -22,7 +22,7 @@ router.post("/", newUserValidation,async (req, res) => {
         result,
       });
     }
-    res.json({ status: "error", message: "invalid details" });
+    res.json({ status: "error", message: "Unable to cretae account" });
   } catch (error) {
     console.log(error);
     if (error.message.includes("duplicate key error collection")) {
