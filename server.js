@@ -34,6 +34,7 @@ import cartRouter from "./routers/cart.router.js";
 import reviewsRouter from "./routers/reviews.router.js";
 import tokenRouter from "./routers/token.router.js"
 import logoutRouter from "./routers/logout.router.js";
+import paymentRouter from "./routers/payment.router.js";
 
 
 // /////////////////APIS////////////////////
@@ -45,6 +46,7 @@ app.use("/api/v1/cart", cartRouter);
 app.use("/api/v1/token",tokenRouter)
 app.use("/api/v1/reviews", reviewsRouter);
 app.use("/api/v1/logout", logoutRouter);
+app.use("/api/v1/payment", paymentRouter);
 
 // app.listen(3000);
 app.listen(PORT, (error) => {

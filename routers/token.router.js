@@ -1,8 +1,9 @@
 import express from "express";
 const router = express.Router();
-import { getUserByEmailAndRefeshJWT } from "../models/newUser/NewUser.model.js";
+import { getUserByEmailAndRefeshJWT,getUserByEmail} from "../models/newUser/NewUser.model.js";
 
 import { verifyRefreshJWT, createAccessJWT } from "../jwthelpers/jwthelpers.js";
+// import { JsonWebTokenError } from "jsonwebtoken";
 
 router.get("/", async (req, res) => {
   try {
@@ -52,6 +53,31 @@ router.get("/", async (req, res) => {
     res.status(403).json({
       status: "error",
       message: "Unauthorized!",
+    });
+  }
+});
+
+router.post("/", async (req, res) => {
+  try {
+    const { token } = req.body;
+    if (token) {
+      const { email } = await verifyRefreshJWT(token);
+
+      if (email) {
+        // 2. check if it is in the database
+        const user = await getUserByEmail(email);
+        if (user._id) {
+          return res.json({
+            status: "success",
+            message: "Here is the user Details",
+            user,
+          });
+        }
+      }
+    }
+  } catch (error) {
+    res.status(403).json({
+      status: "error",
     });
   }
 });

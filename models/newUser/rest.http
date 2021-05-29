@@ -75,5 +75,20 @@ Content-Type: application/json
 GET http://localhost:8001/api/v1/token
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2MjIwODg5MTMsImV4cCI6MTYyNDY4MDkxM30.K8pvlxRJCPVD7CmDFSNMV5ctcLEHYVPhSh6uCSGxgic
 
+### get user by token
+POST http://localhost:8001/api/v1/token
+Content-Type: application/json
 
+{
+"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2MjIyNTI4ODgsImV4cCI6MTYyNDg0NDg4OH0.dVLI6L11p-hIFVONvfwQZ28-9sCRXSbj2FlaBGsOQiU"
+}
+
+
+###payment
+POST http://localhost:8001/api/v1/payment
+Content-Type: application/json
+
+{
+"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2MjIyNTI4ODgsImV4cCI6MTYyNDg0NDg4OH0.dVLI6L11p-hIFVONvfwQZ28-9sCRXSbj2FlaBGsOQiU"
+}
 
