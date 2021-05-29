@@ -7,7 +7,7 @@ POST http://localhost:8001/api/v1/create-account
 Content-Type: application/json
 
 {
-    "email":"amritttttsapkota32@gmail.com",
+    "email":"abc@gmail.com",
     "password":"123456",
     "fName":"amrit",
     "lName":"sapkota",
@@ -20,8 +20,8 @@ POST http://localhost:8001/api/v1/login
 Content-Type: application/json
 
 {
-    "email":"amritsapkota32@gmail.com",
-    "password":"abcd"
+    "email":"abc@gmail.com",
+    "password":"123456"
 }
 
 ##Category
@@ -50,4 +50,30 @@ Content-Type: application/json
 {
 "ids":["609e753ff1af6621b4f0f414","609e7572f1af6621b4f0f415"]
 }
+
+
+###insert product reviews
+POST http://localhost:8001/api/v1/reviews
+Content-Type: application/json
+
+{
+"reviewsObj":"good pGFGroduct"
+}
+
+
+
+###logout api
+POST http://localhost:8001/api/v1/logout
+Content-Type: application/json
+
+{
+"_id":"60a5ec7e4d84722910d67b82"
+}
+
+
+###GET ACCESS TOKEN API
+GET http://localhost:8001/api/v1/token
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFiY0BnbWFpbC5jb20iLCJpYXQiOjE2MjIwODg5MTMsImV4cCI6MTYyNDY4MDkxM30.K8pvlxRJCPVD7CmDFSNMV5ctcLEHYVPhSh6uCSGxgic
+
+
 

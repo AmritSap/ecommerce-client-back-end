@@ -31,6 +31,10 @@ import loginRouter from "./routers/login.router.js";
 import productRouter from "./routers/product.router.js";
 import categoryRouter from "./routers/category.router.js";
 import cartRouter from "./routers/cart.router.js";
+import reviewsRouter from "./routers/reviews.router.js";
+import tokenRouter from "./routers/token.router.js"
+import logoutRouter from "./routers/logout.router.js";
+
 
 // /////////////////APIS////////////////////
 app.use("/api/v1/create-account", NewUserRouter);
@@ -38,6 +42,10 @@ app.use("/api/v1/login", loginRouter);
 app.use("/api/v1/product", productRouter);
 app.use("/api/v1/category", categoryRouter);
 app.use("/api/v1/cart", cartRouter);
+app.use("/api/v1/token",tokenRouter)
+app.use("/api/v1/reviews", reviewsRouter);
+app.use("/api/v1/logout", logoutRouter);
+
 // app.listen(3000);
 app.listen(PORT, (error) => {
   if (error) console.log(error);

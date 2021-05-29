@@ -1,7 +1,7 @@
 import SchemaSession from "./Session.schema.js";
 
 export const storeAccessJwt = async (newSession) => {
-  console.log("from here", newSession);
+  console.log("from session", newSession);
   try {
     const result = await SchemaSession(newSession).save();
     return result;
@@ -20,10 +20,9 @@ export const getAccessJWTByToken = async (accessJWt) => {
 };
 
 export const deleteAccessJwtByUserId = (userId) => {
+  console.log("from session model", userId);
   try {
-    SchemaSession.findOneAndDelete(userId)
-      .then((data) => {})
-      .catch((error) => error);
+    SchemaSession.findOneAndDelete(userId);
   } catch (error) {
     console.log(error);
   }

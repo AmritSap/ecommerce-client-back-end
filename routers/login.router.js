@@ -5,6 +5,8 @@ import { getUserByEmail } from "../models/newUser/NewUser.model.js";
 import { comparePassword } from "../helpers/passwordBycrypt.helpers.js";
 import { createAccessJWT, createRefreshJWT } from "../jwthelpers/jwthelpers.js";
 import { loginValidation } from "../middlewares/formValidation.midleware.js";
+
+
 router.post("/", loginValidation, async (req, res) => {
   const { email, password } = req.body;
 
@@ -35,6 +37,7 @@ router.post("/", loginValidation, async (req, res) => {
       message: "login success",
       accessJWT,
       refreshJWT,
+      result: result._id,
     });
   } catch (error) {
     throw new Error(error.message);
